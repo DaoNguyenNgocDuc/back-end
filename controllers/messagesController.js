@@ -23,6 +23,13 @@ module.exports.getAllMessage = async (req, res, next) => {
                 $all: [from,to],
            },
         }).sort({updateAt:1});
+        const projectMessages = messages.map((msg) => {
+            return {
+                fromSelf: msg.sender.toString() === from,
+                message: msg.message.text,
+            };
+        });
+        res.json(projectMessages);
     } catch(ex) {
         next(ex);
     }
