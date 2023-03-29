@@ -14,7 +14,7 @@ module.exports.addMessage = async (req, res, next) => {
         next(ex);
     }
 }
-
+ 
 module.exports.getAllMessage = async (req, res, next) => {
     try {
         const {form,to} = req.body;
